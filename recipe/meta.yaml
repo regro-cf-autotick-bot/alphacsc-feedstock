@@ -1,4 +1,4 @@
-{% set version = "0.3" %}
+{% set version = "0.4.1" %}
 
 package:
   name: alphacsc
@@ -6,12 +6,12 @@ package:
 
 source:
   url: https://github.com/alphacsc/alphacsc/archive/{{ version }}.tar.gz
-  sha256: 008acfcd39e8f9b926a22535015ae09a4e6e85986d496d4b279178b396a1dda2
+  sha256: 3981eaddbeaf94a3ec42754983ee6371d4f6c021aae06f7a05b8c2f32ab1fc11
   patches:
-   - patches/001-remove_sporco_files_from_package.patch
+    - patches/001-remove_sporco_files_from_package.patch
 
 build:
-  number: 1
+  number: 0
   script: "{{ PYTHON }} -m pip install . -vv"
 
 requirements:
@@ -21,6 +21,7 @@ requirements:
     - cython                                 # [build_platform != target_platform]
     - numpy                                  # [build_platform != target_platform]
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
   host:
     - python
     - pip
